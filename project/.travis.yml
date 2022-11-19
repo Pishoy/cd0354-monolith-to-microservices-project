@@ -22,8 +22,8 @@ script:
   - docker tag udagram-api-feed bishoyabdo/udagram-api-feed
   - docker tag udagram-api-user bishoyabdo/udagram-api-user
   - docker tag udagram-frontend bishoyabdo/udagram-frontend
-  - docker tag udagram-reverseproxy bishoyabdo/udagram-reverseproxy
+  - docker tag reverseproxy bishoyabdo/reverseproxy
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - for i in udagram-api-feed  udagram-api-user  udagram-frontend  reverseproxy ; do docker push bishoyabdo/$i ; done
+  - for i in udagram-api-feed  udagram-api-user  udagram-frontend reverseproxy ; do docker push bishoyabdo/$i:v1 ; done
